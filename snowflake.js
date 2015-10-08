@@ -15,7 +15,7 @@
 
   Snowflake.prototype.RADIUS = 2;
 
-  Snowflake.randomSnowflake = function(maxX, maxY) {
+  Snowflake.addRandomSnowflake = function(maxX, maxY) {
     return new Snowflake(
       maxX * Math.random(),
       maxY * Math.random(),

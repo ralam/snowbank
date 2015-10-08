@@ -1,4 +1,4 @@
-(function () {
+(function() {
   if (typeof Display === "undefined") {
     window.Display = {};
   }
@@ -7,26 +7,27 @@
     this.x = x;
     this.y = y;
     this.ctx = ctx;
-    this.snowflakePositions = [];
-
-    this.snowflakes = [];
-    for(var i = 0; i < this.NUM_SNOWFLAKES; i++) {
-      this.snowflakes.push(
-        Display.Snowflake.randomSnowflake(x, y)
-      );
-    }
+    this.snow = new Display.Snow(x, y);
+    // this.snowflakePositions = [];
+    //
+    // this.snowflakes = [];
+    // for(var i = 0; i < this.NUM_SNOWFLAKES; i++) {
+    //   this.snowflakes.push(
+    //     Display.Snowflake.randomSnowflake(x, y)
+    //   );
+    // }
   };
 
   View.prototype.DIM_X = 500;
   View.prototype.DIM_Y = 500;
-  View.prototype.NUM_SNOWFLAKES = 500;
+
 
   View.prototype.render = function(ctx) {
     ctx.clearRect(0, 0, this.DIM_X, this.DIM_Y);
     ctx.fillStyle = "#000000";
     ctx.fillRect(0, 0, this.DIM_X, this.DIM_Y);
 
-    this.moveSnowflakes(ctx);
+    this.snow.moveSnowflakes(ctx);
   };
 
   View.prototype.moveSnowflakes = function(ctx) {
