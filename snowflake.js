@@ -46,20 +46,15 @@
       this.pos[0] = 0;
     }
     if (this.pos[1] >= (this.maxY - 1)) {
-      this.velocity = [0, 0]; //stop snowflake;
-      this.moving = false;
+      this.pos[1] = 0;
     }
   };
-
-  // Snowflake.prototype.stop = function() {
-  //   if this.pos[0] += this.
-  // };
 
   Snowflake.prototype.randomVel = function() {
     var xNeg = 0;
     (Math.round(Math.random() * 2) === 0) ? xNeg = -1 : xNeg = 1;;
     var x = Math.ceil(Math.random() * 5);
-    var y = Math.ceil(Math.random() * 5);
+    var y = Math.ceil(Math.random() * 4);
     return [x, y]
   };
 
