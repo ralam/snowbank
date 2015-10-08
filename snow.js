@@ -35,9 +35,16 @@
       var yDist = Math.abs(snowflake.pos[1] - this.boundary[range[i]]);
       if (snowflake.pos[1] >= this.boundary[range[i]] - snowflake.radius) {
         stuck = true;
-        this.boundary[range[i]] -= 1;
-        this.boundary[range[i + 1]] -= 0.25;
-        this.boundary[range[i - 1]] -= 0.25;
+        if (snowflake.pos[0] = range[i]) {
+          snowflake.pos[1] = this.boundary[range[i]] - snowflake.radius;
+        } else {
+          snowflake.pos[0] -= snowflake.velocity[0];
+          snowflake.pos[1] = this.boundary[snowflake.pos[0]] - snowflake.radius;
+        }
+
+        this.boundary[range[i]] -= snowflake.radius;
+        this.boundary[range[i + 1]] -= 1;
+        this.boundary[range[i - 1]] -= 1;
         return stuck;
         break
       }
@@ -46,7 +53,7 @@
 
   Snow.prototype.checkCollisions = function(snowflake){
     var that = this;
-    var y = snowflake.pos[1]
+    var y = snowflake.pos[0]
     var range = [(y - 1), y, (y + 1)]
     if (this.isCollidedWith(snowflake, range)) {
       snowflake.stick();
