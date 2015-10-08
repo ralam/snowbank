@@ -18,7 +18,6 @@
 
   Snow.prototype.moveSnowflakes = function(ctx) {
     this.snowflakes.forEach(function(snowflake) {
-
       if (snowflake.moving) {
         snowflake.move();
         this.checkCollisions(snowflake);
@@ -27,9 +26,6 @@
     this.snowflakes.forEach(function(snowflake) {
       snowflake.render(ctx)
     });
-
-    console.log(this.boundary);
-
   };
 
   Snow.prototype.isCollidedWith = function(snowflake, range) {
@@ -44,11 +40,8 @@
         this.boundary[range[i - 1]] -= 0.25;
         return stuck;
         break
-
       }
-
     }
-
   };
 
   Snow.prototype.checkCollisions = function(snowflake){
@@ -58,7 +51,5 @@
     if (this.isCollidedWith(snowflake, range)) {
       snowflake.stick();
     }
-
   };
-
 })();

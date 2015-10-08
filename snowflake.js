@@ -36,8 +36,6 @@
   };
 
   Snowflake.prototype.stick = function () {
-    // this.pos[0] += this.velocity[0] / 4;
-    // this.pos[1] += this.velocity[1] / 4;
     this.moving = false;
   };
 
