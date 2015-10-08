@@ -8,14 +8,6 @@
     this.y = y;
     this.ctx = ctx;
     this.snow = new Display.Snow(x, y);
-    // this.snowflakePositions = [];
-    //
-    // this.snowflakes = [];
-    // for(var i = 0; i < this.NUM_SNOWFLAKES; i++) {
-    //   this.snowflakes.push(
-    //     Display.Snowflake.randomSnowflake(x, y)
-    //   );
-    // }
   };
 
   View.prototype.DIM_X = 500;

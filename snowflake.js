@@ -25,9 +25,10 @@
   };
 
   Snowflake.prototype.move = function() {
-    this.pos[0] += this.velocity[0];
+    if (this.moving)
+    {this.pos[0] += this.velocity[0];
     this.pos[1] += this.velocity[1];
-    this.wrap();
+    this.wrap();}
   };
 
   Snowflake.prototype.wrap = function() {
