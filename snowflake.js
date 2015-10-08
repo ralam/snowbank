@@ -17,18 +17,28 @@
 
   Snowflake.addRandomSnowflake = function(maxX, maxY) {
     return new Snowflake(
-      maxX * Math.random(),
-      maxY * Math.random(),
+      Math.floor(maxX * Math.random()),
+      Math.floor(maxY * Math.random()),
       maxX,
       maxY
     );
   };
 
   Snowflake.prototype.move = function() {
-    if (this.moving)
-    {this.pos[0] += this.velocity[0];
+    this.pos[0] += this.velocity[0];
     this.pos[1] += this.velocity[1];
-    this.wrap();}
+    this.wrap();
+  };
+
+  Snowflake.prototype.futurePos = function() {
+    newPos = [this.pos[0] + this.velocity[0], this.pos[1] + this.velocity[1]];
+    return newPos
+  };
+
+  Snowflake.prototype.stick = function () {
+    // this.pos[0] += this.velocity[0] / 4;
+    // this.pos[1] += this.velocity[1] / 4;
+    this.moving = false;
   };
 
   Snowflake.prototype.wrap = function() {
@@ -66,5 +76,17 @@
     );
     ctx.fill();
   }
+
+  Snowflake.prototype.isCollidedWith = function(otherFlake) {
+    var that = this;
+    var xDist = Math.abs(this.pos[0] - otherFlake.pos[0]);
+    var yDist = Math.abs(this.pos[1] - otherFlake.pos[1]);
+    var distBetween = Math.sqrt(Math.pow(xDist, 2) + Math.pow(yDist, 2));
+    if (distBetween < (this.radius + otherFlake.radius)){
+      return true;
+    } else {
+      return false;
+    }
+  };
 
 })();
